@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandGravity</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/holistic"></script>
+</head>
+<body>
+    <!-- Modern Navbar -->
+    <nav id="navbar">
+        <div class="logo">HandGravity</div>
+        <button id="settingsBtn">⚙ Settings</button>
+    </nav>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Webcam Container (Right-click accessible) -->
+    <div id="webcamContainer">
+        <video id="webcamVideo" autoplay playsinline muted></video>
+        <canvas id="skeletonCanvas"></canvas>
+    </div>
+
+    <!-- Custom Webcam Context Menu -->
+    <div id="webcamContextMenu" class="hidden">
+        <div class="menu-label">Size</div>
+        <div class="menu-item" data-action="resize" data-value="small">Small</div>
+        <div class="menu-item" data-action="resize" data-value="medium">Medium</div>
+        <div class="menu-item" data-action="resize" data-value="large">Large</div>
+        <div class="menu-separator"></div>
+        <div class="menu-label">Position</div>
+        <div class="menu-item" data-action="move" data-value="top-left">Top Left</div>
+        <div class="menu-item" data-action="move" data-value="top-right">Top Right</div>
+        <div class="menu-item" data-action="move" data-value="bottom-left">Bottom Left</div>
+        <div class="menu-item" data-action="move" data-value="bottom-right">Bottom Right</div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="hidden">
+        <div class="modal-content">
+            <h2>System Settings</h2>
+            <div class="setting-group">
+                <label for="particleCountInput">Particle Density: <span id="particleCountValue"></span></label>
+                <input type="range" id="particleCountInput" min="1000" max="15000" step="1000">
+                <small>Higher counts reduce performance on low-end devices.</small>
+            </div>
+            
+            <div class="setting-group">
+                <label for="colorThemeSelect">Particle Theme:</label>
+                <select id="colorThemeSelect" class="settings-select">
+                    <option value="cyberpunk">Cyberpunk Neon</option>
+                    <option value="fire">Magma Fire</option>
+                    <option value="ocean">Deep Ocean</option>
+                </select>
+            </div>
+
+            <div class="modal-actions">
+                <button id="closeSettingsBtn">Cancel</button>
+                <button id="saveSettingsBtn">Save & Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading">Initializing HandGravity...</div>
+    <div id="error"></div>
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
