@@ -1,4 +1,20 @@
+<div align="center">
+
+![HandGravity Hero](./assets/hero_banner.png)
+
 # HandGravity 🌌
+
+**Transform your webcam into a physical interaction field with high-energy neon particles.**
+
+[![Demo Status](https://img.shields.io/badge/Status-Beta-brightgreen.svg)]()
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)]()
+[![MediaPipe](https://img.shields.io/badge/Engine-MediaPipe_Holistic-FF6F00.svg)]()
+[![Language](https://img.shields.io/badge/Language-Vanilla_JS-F7DF1E.svg)]()
+[![Style](https://img.shields.io/badge/Styling-CSS_Glassmorphism-239120.svg)]()
+
+</div>
+
+---
 
 HandGravity is a premium, real-time holographic particle system controlled entirely by hand gestures. Powered by **MediaPipe Holistic** and **HTML5 Canvas**, it transforms your webcam into a physical interaction field where thousands of neon particles react to your movements with fluid, high-energy physics.
 
@@ -55,65 +71,41 @@ Follow these steps once you have cloned the repository:
    Since we use **MediaPipe via CDN**, you can ignore running `npm install`. All libraries load directly in the browser.
 
 3. **Serve the Project**:
-   For security reasons, browsers block webcam access for local files (`file://`). You **must** serve the folder through a local server. Choose one of the following simple methods:
+   For security reasons, browsers block webcam access for local files (`file://`). You **must** serve the folder through a local server:
+   - **VS Code**: Use the **Live Server** extension.
+   - **Python**: Run `python -m http.server 8000`.
+   - **Node.js**: Run `npx http-server .`.
 
-   - **VS Code (Recommended)**: Install the **Live Server** extension. Right-click `index.html` and select **"Open with Live Server"**.
-   - **Python**: Run `python -m http.server 8000` in your terminal.
-   - **Node.js**: Run `npx http-server .` or `npx serve .`.
-
-4. **Launch & Permissions**:
-   - Navigate to `http://localhost:8000` (or the port provided by your server).
-   - Click **Allow** when your browser asks for Camera permissions.
-   - Wait 2–3 seconds for the MediaPipe WASM models to initialize.
-
-### 3. Basic Interactions
-Once the particles appear:
-- **Move your hand**: Watch them react.
-- **Fist**: Repel them.
-- **Open Palm**: Attract them.
-- **Peace Sign**: Trigger the **FaceMatrix Hologram**.
-
+4. **Launch & Permissions**: Navigate to `http://localhost:8000`, click **Allow** camera access, and wait for initialization.
 
 ---
 
 ## ⚙️ Configuration & Customization
 
-### 🧬 Settings Modal
-Click the **Gear (⚙) icon** in the navbar:
-- **Particle Density**: Scale the field from 1,000 to 15,000 particles.
-- **Color Themes**:
-    - **Cyberpunk Neon**: Cyan, Magenta, Purple, Orange.
-    - **Magma Fire**: Intense Reds, Oranges, and Yellows.
-    - **Deep Ocean**: Cool Blues, Cyans, and White.
+### 🧬 Settings Modal (⚙)
+Adjust **Particle Density** (1,000–15,000) and switch between vibrant **Color Themes**.
 
-### 🎥 Webcam Layout
-**Right-click** on the webcam preview to access the context menu:
-- Change the window **Size** (Small, Medium, Large).
-- Snap the window to any of the 4 **Positions** (Top-Left, Top-Right, Bottom-Left, Bottom-Right).
+### 🎥 Webcam Layout (Right-Click)
+Access the contextual menu to change window **Size** and snap it to any of the 4 screen **Positions**.
 
 ---
 
-## 🛠 Technical Architecture
+## 🏗️ Technical Architecture
 
 > [!TIP]
 > **Performance Tip**: If the FPS drops below 60, try reducing the particle density in the Settings menu toggle.
 
 - **`tracking.js`**: Orchestrates **MediaPipe Holistic**. Extracts simultaneous hand landmarks and facial geometry.
 - **`gestures.js`**: Hand-landmark analysis engine for classifying high-level interaction states.
-- **`particles.js`**: Core physics engine. Manages velocity vectors, gravity (g = 0.06), friction (f = 0.99), and "FaceMode" spring targets.
-- **`forces.js`**: Vector math implementation for directional interaction forces ($F = G * \frac{m_1 m_2}{r^2}$).
-- **`renderer.js`**: The main `requestAnimationFrame` driver. Manages the trail-fade effect ($alpha = 0.15$) and the dynamic HUD.
-- **`style.css`**: Modern UI styling with glassmorphism, blur filters, and neon accents.
+- **`particles.js`**: Core physics engine. Manages velocity vectors, gravity ($g = 0.06$), friction ($f = 0.99$), and "FaceMode" spring targets.
+- **`forces.js`**: Vector math implementation for directional interaction forces ($F = G \frac{m_1 m_2}{r^2}$).
+- **`renderer.js`**: The main `requestAnimationFrame` driver. Manages the trail-fade effect ($\alpha = 0.15$) and the dynamic HUD.
 
 ---
 
-## 🔮 Future Roadmap
-- [ ] **Sonic Gravity**: Web Audio API integration where particle movement generates ambient synth textures.
-- [ ] **Chromatic Aberration**: Post-processing effects on high-energy blasts.
-- [ ] **Custom Palettes**: Ability for users to define their own hexadecimal color themes.
-- [ ] **Gesture Learning**: Expand detection to more complex signs like "Rock on" or "L-shape".
+## 🛡️ Support & Future Roadmap
+- [ ] **Sonic Gravity**: Web Audio API integration for motion-synth textures.
+- [ ] **Chromatic Aberration**: Post-processing on high-energy blasts.
+- [ ] **Custom Palettes**: Hexadecimal color theme selection.
 
----
-
-## 🛡️ Support
-Optimized for Chromium-based browsers only. Requires an active camera device and browser-level permissions. Created with for the love of physics and interactive art. 🌌
+Optimized for Chromium-based browsers. Created with ❤️ for interactive art. 🌌
